@@ -1,0 +1,201 @@
+/* ========================================
+   BASE STYLES
+======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background: #0a0a0a;
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   SPACER SECTIONS
+======================================== */
+.spacer-top,
+.spacer-bottom {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.spacer-top {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.spacer-bottom {
+  background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+}
+
+.spacer-top h1,
+.spacer-bottom h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.spacer-top p,
+.spacer-bottom p {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 60ch;
+  line-height: 1.75;
+}
+
+.spacer-top__subhead {
+  margin-bottom: 1.5rem;
+}
+
+.spacer-top__support {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  max-width: 58ch;
+}
+
+/* ========================================
+   HERO 3D SECTION (Target Section)
+======================================== */
+.hero-3d {
+  position: relative;
+  min-height: 100vh;
+  background: #000000;
+  overflow: hidden;
+}
+
+.hero-3d__container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+  align-items: center;
+  padding: 60px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.hero-3d__content {
+  z-index: 10;
+}
+
+.hero-3d__title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.hero-3d__description {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  max-width: 62ch;
+}
+
+.hero-3d__bullets {
+  list-style: none;
+  margin: 1.5rem 0 2rem;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-3d__bullets li {
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.hero-3d__bullets li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #4a9eff;
+}
+
+.hero-3d__cta {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  margin-top: 1.5rem;
+}
+
+.hero-3d__viewer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+
+#three-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Prevent GSAP transition interference */
+  transition: none !important;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 1024px) {
+  .hero-3d__container {
+    grid-template-columns: 1fr;
+    padding: 40px;
+  }
+
+  .hero-3d__title {
+    font-size: 3rem;
+  }
+
+  .hero-3d__description {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .spacer-top h1,
+  .spacer-bottom h2 {
+    font-size: 2rem;
+  }
+
+  .spacer-top p,
+  .spacer-bottom p {
+    font-size: 1.1rem;
+  }
+
+  .spacer-top__support {
+    font-size: 1rem;
+  }
+
+  .hero-3d__title {
+    font-size: 2.5rem;
+  }
+
+  .hero-3d__description {
+    font-size: 1.1rem;
+  }
+
+  .hero-3d__viewer {
+    min-height: 400px;
+  }
+}

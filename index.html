@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruckVault Section - Standalone Demo</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+  <!-- Pre-scroll spacer -->
+  <section class="spacer-top">
+    <h1>Scroll-driven 3D Model Section</h1>
+    <p class="spacer-top__subhead">A pinned, scroll-linked 3D viewer built with Three.js + GSAP ScrollTrigger. The model view is deterministic. As you scroll, the camera moves from a defined START pose to a defined END pose.</p>
+    <p class="spacer-top__support">This is a standalone demo of the same interaction pattern we can use across homepage sections and future product configuration experiences.</p>
+  </section>
+
+  <!-- Target section (captured HTML will be integrated here) -->
+  <section class="hero-3d" id="viewer-section">
+    <div class="hero-3d__container">
+      <div class="hero-3d__content">
+        <h2 class="hero-3d__title">Scroll controls the camera</h2>
+        <p class="hero-3d__description">This section pins during scroll and maps scroll progress (0 → 1) to a camera move across the model. We capture exact START and END poses, then interpolate position, rotation, target, and dolly distance. This creates a stable, repeatable, and easy to tune experience.</p>
+        <ul class="hero-3d__bullets">
+          <li>Deterministic: camera is driven only by scroll</li>
+          <li>Tunable: START and END poses can be updated for composition</li>
+          <li>Reusable: the same pattern supports feature reveals and config-driven states</li>
+        </ul>
+        <p class="hero-3d__cta">Scroll to progress through the camera move.</p>
+      </div>
+      <div class="hero-3d__viewer">
+        <canvas id="three-canvas"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Post-scroll spacer -->
+  <section class="spacer-bottom">
+    <h2>A reusable interaction pattern</h2>
+    <p>This workflow is valuable prep for Neo-config and future vehicle models. The requirements for real-time web use stay the same no matter how the 3D model is driven. The GLB must be built with predictable hierarchy, clean materials, and solid optimization so it can be controlled deterministically. In this demo, the input is scroll progress. In the configurator, the input becomes configuration state, driving visibility, materials, and animation hooks reliably.</p>
+  </section>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
