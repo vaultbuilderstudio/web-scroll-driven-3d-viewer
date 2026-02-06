@@ -50,7 +50,7 @@ async function init() {
   let loadedModel = null;
   try {
     updateStatus(statusDiv, '⏳ Loading model...');
-    const { model } = await loadModel('/assets/model.glb', scene);
+    const { model } = await loadModel('/assets/model.glb', scene, renderer);
     loadedModel = model;
 
     updateStatus(statusDiv, '✅ Model loaded');

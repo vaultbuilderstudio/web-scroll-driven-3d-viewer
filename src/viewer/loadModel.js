@@ -1,14 +1,16 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
+import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js';
 
 /**
  * Load GLB model with enhanced features
  * @param {string} modelPath - Path to GLB file
  * @param {THREE.Scene} scene - Three.js scene
+ * @param {THREE.WebGLRenderer} renderer - Three.js renderer (for KTX2 support)
  * @returns {Promise<{model: THREE.Group, sphere: THREE.Sphere}>} - Loaded model + bounding sphere
  */
-export function loadModel(modelPath, scene) {
+export function loadModel(modelPath, scene, renderer) {
   return new Promise((resolve, reject) => {
     const loader = new GLTFLoader();
 
@@ -19,6 +21,18 @@ export function loadModel(modelPath, scene) {
       loader.setDRACOLoader(dracoLoader);
     } catch (e) {
       // DRACO not critical, continue without it
+    }
+
+    // Enable KTX2 texture support if the model uses it
+    try {
+      const ktx2Loader = new KTX2Loader();
+      ktx2Loader.setTranscoderPath('https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/libs/basis/');
+      if (renderer) {
+        ktx2Loader.detectSupport(renderer);
+      }
+      loader.setKTX2Loader(ktx2Loader);
+    } catch (e) {
+      // KTX2 not critical, continue without it
     }
 
     loader.load(
