@@ -1,13 +1,13 @@
 # Assets Directory
 
-## model.glb (Required)
+## ford_expid_24_v2.glb (Required)
 
 ⚠️ **You must provide a GLB model file here.**
 
 To copy from the parent workspace:
 ```bash
 # From standalone/ directory:
-cp ../../../model/web_ready_vehicle_5.glb ./public/assets/model.glb
+cp ../../../model/web_ready_vehicle_15.glb ./public/assets/ford_expid_24_v2.glb
 ```
 
 Or use any GLB model of your choice.
