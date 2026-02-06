@@ -50,12 +50,12 @@ async function init() {
   let loadedModel = null;
   try {
     updateStatus(statusDiv, '⏳ Loading model...');
-    const { model } = await loadModel('/assets/model.glb', scene, renderer);
+    const { model } = await loadModel('/assets/ford_expid_24_v3_hicomp_texcomp_texlimit2048_simp20.glb', scene, renderer);
     loadedModel = model;
 
     updateStatus(statusDiv, '✅ Model loaded');
   } catch (error) {
-    console.warn('Missing model.glb. Add it to public/assets/ to view the model.');
+    console.warn('Missing ford_expid_24_v3_hicomp_texcomp_texlimit2048_simp20.glb. Add it to public/assets/ to view the model.');
     updateStatus(statusDiv, '❌ Model load failed');
     // Continue anyway with empty scene
   }

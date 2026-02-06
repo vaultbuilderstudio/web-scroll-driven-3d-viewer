@@ -18,12 +18,11 @@ npm install
 ```
 
 ### 2. Copy Model File
-Copy a GLB model to `public/assets/model.glb`:
+Copy a GLB model to `public/assets/ford_expid_24_v3_hicomp_texcomp_texlimit2048_simp20.glb`:
 ```bash
 # From project root, if model exists in parent workspace:
-cp ../../../model/web_ready_vehicle_5.glb public/assets/model.glb
+cp ../../../model/web_ready_vehicle_15-cc-tc-tl2048-si0.8.glb public/assets/ford_expid_24_v3_hicomp_texcomp_texlimit2048_simp20.glb
 ```
-`public/assets/model.glb` is gitignored. Each teammate should add their own model locally.
 
 ### 3. Run Development Server
 ```bash
@@ -73,7 +72,7 @@ standalone/
 ├── package.json            # Scripts and dependencies
 ├── public/
 │   └── assets/
-│       └── model.glb       # 3D model file (you must provide)
+│       └── ford_expid_24_v3_hicomp_texcomp_texlimit2048_simp20.glb       # 3D model file
 ├── src/
 │   ├── main.js             # Entry point
 │   ├── styles.css          # Styles (integrate captured CSS here)
@@ -96,7 +95,7 @@ Edit `src/viewer/scrollTimeline.js` to adjust:
 ## Troubleshooting
 
 **Model doesn't load:**
-- Ensure `public/assets/model.glb` exists
+- Ensure `public/assets/ford_expid_24_v3_hicomp_texcomp_texlimit2048_simp20.glb` exists
 - Check browser console for errors
 - Try a different GLB model from workspace
 
