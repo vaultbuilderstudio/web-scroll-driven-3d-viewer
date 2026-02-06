@@ -9,7 +9,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 export function initViewer(canvasElement) {
   // Scene
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x1a1a1a);
+  scene.background = new THREE.Color(0xffffff);
 
   // Camera Rig (wrap camera so GSAP can rotate the rig, not the camera)
   const cameraRig = new THREE.Object3D();
@@ -31,6 +31,7 @@ export function initViewer(canvasElement) {
     antialias: true,
     alpha: false,
   });
+  renderer.setClearColor(0xffffff, 1);
   renderer.setSize(canvasElement.clientWidth, canvasElement.clientHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -127,7 +128,7 @@ export function autoFrame(camera, sphere, controls) {
 function setupKeyboardControls(scene, renderer, controls, camera, cameraRig) {
   let lightsVisible = true;
   let groundVisible = false;
-  let bgColor = 0x1a1a1a;
+  let bgColor = 0xffffff;
 
   let groundPlane = null;
 
@@ -181,7 +182,7 @@ function setupKeyboardControls(scene, renderer, controls, camera, cameraRig) {
           console.log('🎨 Background: Black');
         } else {
           scene.background = new THREE.Color(bgColor);
-          console.log('🎨 Background: Dark gray');
+          console.log('🎨 Background: White');
         }
         break;
 

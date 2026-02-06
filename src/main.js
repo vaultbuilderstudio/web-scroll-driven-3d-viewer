@@ -82,7 +82,7 @@ async function init() {
   // Add shadow catcher plane below model
   if (loadedModel) {
     const bbox = new THREE.Box3().setFromObject(loadedModel);
-    addShadowCatcher(scene, bbox.min.y - 0.02, 20);
+    addShadowCatcher(scene, bbox.min.y - 0.02, 30);
   }
 
   // Apply start pose AFTER model + lighting are ready

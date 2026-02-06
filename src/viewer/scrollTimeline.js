@@ -12,7 +12,7 @@ export const POSES = {
   START: {
     rigPos: { x: 0, y: 0, z: 0 },
     rigRot: { x: 0, y: 0.0767, z: 0 },
-    camLocalPos: { x: 6.280239, y: 1.034926, z: 5.20704 },
+    camLocalPos: { x: 5.980239, y: 1.034926, z: 5.20704 },
     target: { x: -0.196162, y: 0.000054, z: 0.208513 },
     fov: 30
   },
