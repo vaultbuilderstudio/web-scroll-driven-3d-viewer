@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 /**
  * Load GLB model with enhanced features
@@ -21,6 +22,13 @@ export function loadModel(modelPath, scene, renderer) {
       loader.setDRACOLoader(dracoLoader);
     } catch (e) {
       // DRACO not critical, continue without it
+    }
+
+    // Enable Meshopt decoder if the model uses it
+    try {
+      loader.setMeshoptDecoder(MeshoptDecoder);
+    } catch (e) {
+      // Meshopt not critical, continue without it
     }
 
     // Enable KTX2 texture support if the model uses it
