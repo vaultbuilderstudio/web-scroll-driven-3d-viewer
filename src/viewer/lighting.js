@@ -65,37 +65,54 @@ export async function applyHDRI(renderer, scene, opts = {}) {
 export function applyStudioLights(scene, opts = {}) {
   const {
     keyIntensity = 2.8,
-    fillIntensity = 0.9,
+    fillIntensity = 1.6,
     rimIntensity = 1.6,
-    ambientIntensity = 0.2,
+    ambientIntensity = 0.45,
     shadowMapSize = 2048,
     shadowBias = -0.0005,
   } = opts;
 
   // Key light (main directional light) - enhanced for vehicle rendering
   const keyLight = new THREE.DirectionalLight(0xffffff, keyIntensity);
-  keyLight.position.set(6, 8, 6);
+  keyLight.position.set(4, 12, 4);
   keyLight.castShadow = true;
   keyLight.shadow.mapSize.width = shadowMapSize;
   keyLight.shadow.mapSize.height = shadowMapSize;
   keyLight.shadow.camera.near = 0.5;
   keyLight.shadow.camera.far = 50;
-  keyLight.shadow.camera.left = -10;
-  keyLight.shadow.camera.right = 10;
-  keyLight.shadow.camera.top = 10;
-  keyLight.shadow.camera.bottom = -10;
+  keyLight.shadow.camera.left = -6;
+  keyLight.shadow.camera.right = 6;
+  keyLight.shadow.camera.top = 6;
+  keyLight.shadow.camera.bottom = -6;
   keyLight.shadow.bias = shadowBias;
+  keyLight.shadow.radius = 3;
+  keyLight.shadow.normalBias = 0.02;
   scene.add(keyLight);
 
   // Fill light (secondary, opposite side) - neutral white for vehicles
   const fillLight = new THREE.DirectionalLight(0xffffff, fillIntensity);
-  fillLight.position.set(-6, 4, 2);
+  fillLight.position.set(-8, 6, 3);
   scene.add(fillLight);
+
+  // Side fill to open up darker panels
+  const sideFillLight = new THREE.DirectionalLight(0xffffff, 1.0);
+  sideFillLight.position.set(10, 5, 1);
+  scene.add(sideFillLight);
+
+  // Front fill to soften deep shadows on rear quarter
+  const frontFillLight = new THREE.DirectionalLight(0xffffff, 0.6);
+  frontFillLight.position.set(0, 4, 10);
+  scene.add(frontFillLight);
 
   // Rim light (backlight for edge definition)
   const rimLight = new THREE.DirectionalLight(0xffffff, rimIntensity);
   rimLight.position.set(-6, 8, -6);
   scene.add(rimLight);
+
+  // Rear fill to brighten the back of the vehicle
+  const rearFillLight = new THREE.DirectionalLight(0xffffff, 0.5);
+  rearFillLight.position.set(0, 4, -8);
+  scene.add(rearFillLight);
 
   // Ambient hemisphere light for soft fill
   const hemiLight = new THREE.HemisphereLight(0xffffff, 0x222233, ambientIntensity);
@@ -103,7 +120,7 @@ export function applyStudioLights(scene, opts = {}) {
 
   console.log(`✅ Studio lights applied | key: ${keyIntensity}, fill: ${fillIntensity}, rim: ${rimIntensity}`);
 
-  return { keyLight, fillLight, rimLight, hemiLight };
+  return { keyLight, fillLight, sideFillLight, frontFillLight, rimLight, rearFillLight, hemiLight };
 }
 
 /**
@@ -114,7 +131,7 @@ export function applyStudioLights(scene, opts = {}) {
  */
 export function addShadowCatcher(scene, yPosition = -2, size = 20) {
   const planeGeometry = new THREE.PlaneGeometry(size, size);
-  const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.2 });
+  const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.28 });
   const plane = new THREE.Mesh(planeGeometry, planeMaterial);
   plane.rotation.x = -Math.PI / 2;
   plane.position.y = yPosition;

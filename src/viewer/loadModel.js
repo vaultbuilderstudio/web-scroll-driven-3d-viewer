@@ -57,8 +57,7 @@ export function loadModel(modelPath, scene, renderer) {
         // Center model
         model.position.sub(center);
 
-        // Slight horizontal offset to prevent edge clipping during spin
-        model.position.x += 0.25;
+        // Keep model centered to preserve captured poses
 
         // Smart scaling: only scale if wildly off (>1000 or <0.01)
         const radius = maxDim / 2;

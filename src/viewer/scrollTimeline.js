@@ -106,6 +106,7 @@ export function setupScrollTimeline(cameraRig, camera, targetProxy, applyTarget,
       start: CONFIG.TRIGGER_START,
       end: CONFIG.TRIGGER_END,
       pin: true,
+      anticipatePin: 1,
       scrub: CONFIG.SCRUB_SMOOTHING,
       markers: CONFIG.DEBUG,
       onUpdate: (self) => {
